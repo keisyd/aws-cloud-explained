@@ -34,6 +34,7 @@ Basically you can choose how you want your virtual machine to be.
     - Anything you can think of
 - The EC2 User Data Script runs with the root user
 
+
 # Security Group
 
 Let’s talk about these firewall, as the name expose, it’s to protect from fire meaning that it will block everything the comes and you can only **allow ** some traffic to work with it.
@@ -70,5 +71,19 @@ Outbound requests happens when some computer in your network requests a connecti
 - It’s goo to maintain one separate security group for SSH access
 - If your application is not accessible (time out), then it’s a security group issue
 - If your application gives a “connection refused” error, then it’s an application error or it’s not launched.
-- All inbound traffic is **blocked ** by default
-- All outbound traffic is **authorized **by default
+- All inbound traffic is **blocked** by default
+- All outbound traffic is **authorized**    by default
+
+
+### Referencing other security groups
+
+If we attach a security group to another we can use security groups as a level of abstraction to determine our cloud logic. For example we have bigger instances with A more access but also smaller ones B with less access. By attaching B to A, we can create other bigger and smaller ones without thinking about the ips and have the same authorization settings.
+
+### Classic Ports to know
+
+- 22 - SSH (Secure Shell) - log into a Linux instance
+- 21 - FTP (File Transfer Protocol) - upload files into a file share
+- 22 - SFTP (Secure File Transfer Protocol) - upload files using SSH
+- 80 - HTTP - access unsecured websites
+- 443 - HTTPS - access secured websites
+- 3389 - RDP (Remote Desktop Protocol) - log into a Windows instance
